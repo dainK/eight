@@ -1,4 +1,64 @@
 /* styles.css */
+body {
+    background-color: #f1efdd; /* 배경색 설정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh;  */
+    margin-top: 150px;
+}
+
+/* title 태그 스타일링 */
+.myTitle {
+    background-size: cover;
+    width: 100%;
+    /* height: 150px; */
+    background-color: black;
+    font-size: 24px;
+    color: orange; /* 텍스트 색상 설정 */
+    position:fixed;
+    top:0;
+    text-align: center;
+}
+
+.team-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    /* background-color: #f0f0f0; */
+    margin: 20px;
+    top:10;
+    min-width: 400;
+    flex-direction: row;
+}
+@media (max-width: 600px) {
+    .team-box  {
+        flex-direction: column; /* 위아래 정렬 */
+    }
+}
+
+.team-info {
+    flex-direction: column;
+    margin: 30px;
+    width: 300px;
+    height: 300px;
+}
+
+.team-image {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    height: 300px;
+    /* margin: 10px; */
+    padding: 10px;
+}
+
+
 #profile-container {
     display: flex;
     flex-wrap: wrap;
@@ -14,6 +74,17 @@
 
 button {
     margin: 5px;
+    background-color: black; /* 배경색을 검은색으로 설정 */
+    color: orange; /* 텍스트 색상을 노란색으로 설정 */
+    padding: 10px 20px; /* 버튼 내 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 표시 */
+    font-size: 16px; /* 글꼴 크기 설정 */
+    border-radius: 10px; /* 버튼의 모서리를 10px로 둥글게 설정 */
+}
+
+button:hover {
+    background-color: darkslategray; /* 마우스를 버튼 위로 올렸을 때 배경색 변경 */
 }
 
 .modal {
