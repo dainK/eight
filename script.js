@@ -104,6 +104,11 @@ function AddProfileCard(name, mbti, imgurl, pr) {
     const profileCard = document.createElement("div");
     profileCard.classList.add("profile-card");
     profileCard.textContent = name;
+
+    // profileCard.addEventListener("click", () => {
+    //     // window.location.href = 'https://www.naver.com';
+    //     window.location.href = 'index.html';
+    // });
     
     if (mbti.length < 4) {
         mbti = "CUTE";
