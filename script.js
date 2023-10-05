@@ -4,6 +4,11 @@ const removeButton = document.getElementById("remove-button");
 const profileContainer = document.getElementById("profile-container");
 
 let profileCounter = 0;
+AddProfileCard("강다형","ESFJ","https://ca.slack-edge.com/T043597JK8V-U05U1DV7VSR-1d2e0efedf7c-512");
+AddProfileCard("최연식","INFJ","https://ca.slack-edge.com/T043597JK8V-U060662BZ40-37c2900a60af-512");
+AddProfileCard("전민재","ISTP","https://ca.slack-edge.com/T043597JK8V-U05PQJAE9HT-8ef3edfa841e-512");
+AddProfileCard("하정현","INTP","https://ca.slack-edge.com/T043597JK8V-U05UUEXD2TA-927f34d8476a-512");
+AddProfileCard("김민수","ENTP","https://ca.slack-edge.com/T043597JK8V-U05UX2V43J6-gcc499207a54-512");
 
 addButton.addEventListener("click", () => {
     // 모달 팝업 창을 생성
@@ -18,12 +23,12 @@ addButton.addEventListener("click", () => {
     nameLabel.textContent = "이름: ";
     const nameField = document.createElement("input");
     nameField.type = "text";
-    
+
     // 나이 입력 필드
-    const ageLabel = document.createElement("label");
-    ageLabel.textContent = "나이: ";
-    const ageField = document.createElement("input");
-    ageField.type = "number";
+    const mbtiLabel = document.createElement("label");
+    mbtiLabel.textContent = "MBTI: ";
+    const mbtiField = document.createElement("input");
+    mbtiField.type = "text";
 
     const addButtonModal = document.createElement("button");
     addButtonModal.textContent = "등록하기";
@@ -32,15 +37,10 @@ addButton.addEventListener("click", () => {
     addButtonModal.addEventListener("click", () => {
         // const profileName = inputField.value;
         const name = nameField.value;
-        const age = ageField.value;
-        if (name&&age) {
-            const profileCard = document.createElement("div");
-            profileCard.classList.add("profile-card");
-            profileCard.textContent = name;
-            profileCard.innerHTML = `<p>이름: ${name}</p><p>나이: ${age}세</p>`;
-
-            profileContainer.appendChild(profileCard);
-            profileCounter++;
+        const mbti = mbtiField.value;
+        if (name && mbti) {
+            // const profileCard = document.createElement("div");
+            AddProfileCard( name,mbti,"");
         }
 
         // 팝업 창을 닫음
@@ -49,8 +49,8 @@ addButton.addEventListener("click", () => {
 
     modalContent.appendChild(nameLabel);
     modalContent.appendChild(nameField);
-    modalContent.appendChild(ageLabel);
-    modalContent.appendChild(ageField);
+    modalContent.appendChild(mbtiLabel);
+    modalContent.appendChild(mbtiField);
     modalContent.appendChild(addButtonModal);
     modal.appendChild(modalContent);
 
@@ -73,3 +73,33 @@ removeButton.addEventListener("click", () => {
         profileCounter--;
     }
 });
+
+function AddProfileCard(name,mbti,imgurl) {
+    const profileCard = document.createElement("div");
+    profileCard.classList.add("profile-card");
+    profileCard.textContent = name;
+
+    if(!imgurl) {
+        imgurl = "imgteam.png"
+    }
+
+    // profileCard.innerHTML = `<p>이름: ${name}</p><p>나이: ${age}세</p>`;
+    const s
+     = `<div class="card" style="width: 200px;">`
+    
+    + `<img src=${imgurl} height="200" width="200" class="card-img-top" alt="...">`+
+    `<div class="card-body">
+      <h1 class="card-title">${name}</h1>
+      <p>MBTI : ${mbti}</p>
+      <p>안녕하세요.</p>
+    </div>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>`
+  profileCard.innerHTML = s;
+
+    profileContainer.appendChild(profileCard);
+    profileCounter++;
+}
