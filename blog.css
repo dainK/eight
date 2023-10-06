@@ -8,12 +8,13 @@
 
 body {
     background-color: #f1efdd; /* 배경색 설정 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     /* height: 100vh;  */
     margin-top: 100px;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 /* title 태그 스타일링 */
@@ -26,63 +27,59 @@ body {
     color: orange;
     position:fixed;
     top:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+}
+
+.blog-image{
+    margin-right: 20px;
+    /* width: 100px; */
+    /* src:url("imgteam.png"); */
+     max-width: 90px; 
+    border-radius: 50%;
+    height: auto; 
+}
+
+.blog-name{
+    /* margin-left: 20px; */
 }
 
 .blog-box {
-    align-items: flex-start;
-    display: flex;
-    justify-content: center;
     margin: 10px;
     top:10;
-    flex-direction: row;
     width: 100%;
-}
-.blog-left-box {
-    float: left;
-    /* margin: 110px; */
-    width: 200px;
-    /* margin-right: 100px; */
-    /* height: 100%;  */
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.blog-right-box {
-    float: right;
-    /* margin: 10px; */
-    /* width: 300px; */
-    /* width: 200%; */
-}
-
-.blog-profile {
-    float: inline-start;
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    width: 150px;
-    height: 270px;
-    text-align: center;
-    font-size: 15px;
+#post-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .blog-post-box{
-    width: 90%;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    height: 350px;
     border-radius: 10px;
-    background-color: orange;
     margin-bottom: 20px;
+    padding-top: 50px;
+    
+    background-image: url("imgmemo.png");
+    background-position: top;
+    background-size: 400px;
 }
 
 .post {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    /* margin-bottom: 20px; */
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #fff;
+    padding: 20px;
+    height: 100px;
 }
 
 
@@ -95,26 +92,52 @@ body {
     color: #666;
 }
 
+.comment-box{
+    width: 400px;
+    height: 200px;
+    align-items: flex-start;
+    /* background-image: url("imgmemobot.png");
+    background-position: bottom;
+    background-size: 400px; */
+    display: flex;
+}
+
 .comments {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    /* margin-bottom: 20px; */
-    border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #fff;
+    padding: 20px;
     color: orange;
+    font-size: 15px; 
+}
+
+.comment-input{
+    top : 0;
+    /* padding: 20px; */
+    padding-bottom: 20px;
+    padding-left: 10px;
 }
 
 .comment-button {
-    background-color: #fff; /* 배경색을 검은색으로 설정 */
-    color: orange; /* 텍스트 색상을 노란색으로 설정 */
-    border: none; /* 버튼 테두리 제거 */
+    color: black; /* 텍스트 색상을 노란색으로 설정 */
+    border: 1px solid #2B3856;
     cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 표시 */
-    font-size: 20px; /* 글꼴 크기 설정 */
+    font-size: 15px; /* 글꼴 크기 설정 */
     border-radius: 10px; /* 버튼의 모서리를 10px로 둥글게 설정 */
     padding: 2px;
-    /* margin: 10px, 2px, 10px, 2px; */
-    margin-top: 4px;
-    margin-bottom: 4px;
-    width: 60px;
+    margin: 14px;
+    width: 80px;
+    
+}
+
+
+.blog-posting-button {
+    justify-content: center;
+    margin: 5px;
+    background-color: black; /* 배경색을 검은색으로 설정 */
+    color: orange; /* 텍스트 색상을 노란색으로 설정 */
+    padding: 10px 20px; /* 버튼 내 여백 설정 (상하 10px, 좌우 20px) */
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 표시 */
+    font-size: 16px; /* 글꼴 크기 설정 */
+    border-radius: 10px; /* 버튼의 모서리를 10px로 둥글게 설정 */
+    margin: 10px;
 }
