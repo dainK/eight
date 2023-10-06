@@ -1,6 +1,5 @@
-// script.js
-const addButton = document.getElementById("add-button");
-const removeButton = document.getElementById("remove-button");
+const addButton = document.getElementById("progile-add-button");
+const removeButton = document.getElementById("progile-remove-button");
 const profileContainer = document.getElementById("profile-container");
 
 let profileCounter = 0;

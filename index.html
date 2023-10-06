@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에잇팀을 소개합니다.</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="myTitle">
-    <h1>에잇</h1>
+    <div class="title-head">
+        <h1>에잇</h1>
     </div>
+    <button id="test-button">
+        테스트
+    </button>
     <div class="team-box">
         <div class="team-image">
             <img src="imgteam.png" height="400" width="400" alt="이미지 설명">
         </div>
         <div class="team-info">
-        <h2>에잇팀을 소개합니다.</h2>
-        <p>Node.js 3기 A08조 Eight입니다.</p>
+            <h2>에잇팀을 소개합니다.</h2>
+            <p>Node.js 3기 A08조 Eight입니다.</p>
         </div>
     </div>
     <div>
@@ -26,10 +31,25 @@
         <!-- 이곳에 프로필 카드가 동적으로 추가됩니다. -->
     </div>
     <div>
-        <button id="add-button">프로필 추가</button>
-        <button id="remove-button">프로필 삭제</button>
+        <button id="progile-add-button">프로필 추가</button>
+        <button id="progile-remove-button">프로필 삭제</button>
     </div>
 
-    <script src="script.js"></script>
 </body>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="module" src="firebase.js"></script>
+<script src="profile.js"></script>
+<script>
+//     $("#test-button").click(async function () {
+//     // console.log("test");
+//             // window.location.href = 'blog.html?userid=0';
+    
+//     // document.getElementById('button5').addEventListener('click', () => {
+//     //     });
+
+//     //     console.log("test");
+// });
+</script>
+
 </html>

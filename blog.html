@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="blog.css">
+
+</head>
+
+<body>
+    <div class="blog-head">
+        <h2 class="blog-name">에잇님의 다이어리
+            
+        </h2>
+    
+            <button id="blog-test-button">
+                테스트
+            </button>
+    </div>
+
+    <div class="blog-box">
+
+        <div class="blog-left-box">
+            <div class="blog-profile">
+                <!-- <div class="blog-image"> -->
+                <img class="blog-profile-img" src="imgteam.png" height="150" width="150" alt="이미지 설명">
+                <h1 class="blog-profile-name">에잇</h1>
+                <p width="100">오늘도 ㄴr는 기록한ㄷr</p>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div id = "post-container" class="blog-right-box">
+                <div class="blog-post-box">
+                    <div class="post">
+                        <h2 class="post-title">첫 번째 글 제목</h2>
+                        <p class="post-date">2023년 10월 5일</p>
+                        <p class="post-text">첫 번째 글 내용...</p>
+                    </div>
+                    <div class="comment-button"> 💬 10</div>
+                    <div class="comments">
+                        <div class="comment">
+                            <p><span class="comment-name">이름 </span> <span class="comment-text">내용</span> </p>
+                        </div>
+                        <div class="comment">
+                            <p><span class="comment-name">이름 </span> <span class="comment-text">내용</span> </p>
+                        </div>
+                        <!-- 다른 댓글들도 유사한 방식으로 추가할 수 있습니다. -->
+                        <div class="comment-input">
+                            <input class="comment-input-name" type="text" placeholder="이름">
+                            <input class="comment-input-text" type="text" placeholder="내용">
+                            <button class="comment-input-button">입력</button>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- 다른 글들도 유사한 방식으로 추가할 수 있습니다. -->
+           
+        </div>
+    </div>
+    <script>
+        // JavaScript를 사용하여 댓글 토글 기능 추가
+        const commentButtons = document.querySelectorAll('.comment-button');
+        commentButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const comments = button.nextElementSibling;
+                comments.style.display = comments.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script type="module" src="firebase.js"></script>
+<script src="blog.js"></script>
+<script>
+    // const currentURL = window.location.href;
+    // console.log(currentURL);
+    // console.log(window.location);
+    // const urlParams = new URLSearchParams(window.location.search);
+    // console.log(urlParams);
+
+    // $("#blog-test-button").click(async function () {
+    //     // console.log("test");
+
+    // //     // let memberDoc  = await getDoc(doc(db,'blog',"강다형"));
+    // //     // console.log(memberDoc.data());
+
+    // });
+
+</script>
+
+</html>
