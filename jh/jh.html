@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자기소개</title>
+
+  <style>
+    body {
+      background-color: #f1efdd;
+      margin: 0;
+    }
+
+    /* 프로필 이미지 */
+    .img {
+      justify-content: center;
+    }
+
+    #porfile-img {
+      width: 150px;
+      height: 150px;
+      border: 1px solid #2B3856;
+      transform: scale(1);
+      /* 이미지 사이즈 고정 */
+      border-radius: 70%
+    }
+
+    .menu-bar {
+      position: fixed;
+      border: 0;
+      background-color: #2B3856;
+      display: block;
+      width: 300px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .index {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 목차 */
+    .index h3 {
+      color: white;
+      opacity: 0.7;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 목차 각 항목 반응형 커서 */
+    .index h3:hover {
+      font-size: 1.1em;
+      opacity: 1;
+      text-shadow: 0.7px 0.7px 0.7px #000;
+    }
+
+    /* 소개 시작 */
+
+    .about {
+      margin-left: 360px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+    }
+
+    .name {
+      font-size: 65px;
+      font-weight: 900;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .contacts {
+      font-size: 15px;
+      opacity: 0.5;
+      font-family: 'Oswald', sans-serif;
+      font-style: italic;
+    }
+
+    .main-introduction {
+      font-size: 17px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    /* sns 픽토그램 */
+    .fa-brands {
+      color: black;
+      opacity: 0.4
+    }
+
+    .fa-solid {
+      color: black;
+      opacity: 0.4
+    }
+
+    .sns-pictogram i {
+      margin-right: 40px;
+    }
+
+    /*픽토그램 반응형 커서*/
+    footer i:hover {
+      transform: translate(0, -3px);
+    }
+
+
+
+
+
+    .whatilove-text {
+      font-size: 55px;
+      font-weight: 700;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    .whatilove-img {
+      margin-bottom: 20px;
+    }
+
+    .whatilove-img img {
+      width: 150px;
+      height: 150px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* 하단 코멘트 */
+    .interests .comment {
+      font-size: 16px;
+      font-style: italic;
+    }
+  </style>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <header>
+  </header>
+  <nav class="menu-bar">
+    <div class="index">
+      <!-- 프로필 이미지 -->
+      <div class="img">
+        <img id="porfile-img" src="https://ca.slack-edge.com/T043597JK8V-U05UUEXD2TA-927f34d8476a-512">
+      </div>
+      <br>
+      <!-- 목차 내용 -->
+      <h3>ABOUT</h3>
+      <h3>INTERESTS</h3>
+    </div>
+  </nav>
+
+  <section class="about">
+    <!-- 이름 -->
+    <header class="name">
+      <p style="
+        margin-bottom: 30px;
+        margin-top: 30px;
+    "><span>HYEON</span>&nbsp;JUNG<span style="color: #2E4F99;"> HA</span></p>
+      <!-- 연락처 -->
+      <div class="contacts">
+        <p>1998.01.28, (82)10-3336-6426, ysyt3199@gmail.com</p>
+      </div>
+    </header>
+    <br><br>
+    <!-- 소개글 -->
+    <article class="main-introduction">
+      <p>안녕하세요! a8조 에잇의 팀원 하정현 입니다.<br>
+        포기하지 않고 끝까지 완주해서 훗날 멋진 개발자가 되고싶습니다.</p>
+      <br>
+      <p style="opacity: 1"></p>
+    </article>
+    <br><br>
+    <!-- SNS 픽토그램 -->
+    <footer class="sns-pictogram">
+      <a href=""><i class="fa-brands fa-instagram fa-4x"></i></i></a>
+      <a href="https://github.com/zmjjkk98"><i class="fa-brands fa-github fa-4x"></i></a>
+    </footer>
+  </section>
+
+  <section class="interests">
+    <header>
+      <!-- 제목 -->
+      <p style="margin: 10px;" class="whatilove-text"><span>MY</span>&nbsp<span style="color: #2B3856;">INTERESTS</span>
+      <p>
+    </header>
+    <article>
+      <!-- 이미지 -->
+      <div class="whatilove-img">
+        <img src="images/dumi1.jpg">
+        <img src="images/knitting.JPG">
+        <img src="images/dumibell.JPG">
+        <img src="images/bike.jpeg">
+        <img src="images/bell1.jpg">
+        <img src="images/dumi2.jpg">
+        <img src="images/piano.jpeg">
+        <img src="images/passport.jpg">
+        <img src="images/thread.JPG">
+        <img src="images/bell2.jpg">
+      </div>
+      <!-- 코멘트 -->
+      <p class="comment">Things that make me happy✨<br>
+        :knitting, bicycle riding on sunny days, playing the piano, traveling with no plans, and my only Dumi&Bell</p>
+    </article>
+  </section>
+
+
+</body>
+
+</html>
