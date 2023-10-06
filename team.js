@@ -26,14 +26,12 @@ const db = getFirestore(app);
 
 $("#test-button").click(async function () {
     console.log("test");
-    window.location.href = 'blog.html?0';
+    // window.location.href = 'blog.html?0';
 
-    // let post_data = [
-    //     {
-    //         "post": [
+    //         let    post_data = [
     //             {
     //                 "content": {
-    //                     "tilte": "제목",
+    //                     "title": "제목",
     //                     "date": "날짜",
     //                     "text": "내용"
     //                 },
@@ -50,7 +48,7 @@ $("#test-button").click(async function () {
     //             },
     //             {
     //                 "content": {
-    //                     "tilte": "제목",
+    //                     "title": "제목",
     //                     "date": "날짜",
     //                     "text": "내용"
     //                 },
@@ -65,78 +63,73 @@ $("#test-button").click(async function () {
     //                     }
     //                 ]
     //             }
-    //         ]
-    //     },
-    //     {
-    //         "post": [
-    //             {
-    //                 "content": {
-    //                     "tilte": "제목",
-    //                     "date": "날짜",
-    //                     "text": "내용"
-    //                 },
-    //                 "comments": [
-    //                     {
-    //                         "name": "이름",
-    //                         "text": "내용"
-    //                     },
-    //                     {
-    //                         "name": "이름",
-    //                         "text": "내용"
-    //                     }
-    //                 ]
-    //             },
-    //             {
-    //                 "content": {
-    //                     "tilte": "제목",
-    //                     "date": "날짜",
-    //                     "text": "내용"
-    //                 },
-    //                 "comments": [
-    //                     {
-    //                         "name": "이름",
-    //                         "text": "내용"
-    //                     },
-    //                     {
-    //                         "name": "이름",
-    //                         "text": "내용"
-    //                     }
-    //                 ]
-    //             }
-    //         ]
-    //     }
-    // ];
-
+    //         ];
     // let data = {post_data};
     // await setDoc(doc(db, "blog", "0"),data);
 
     // let memberDoc  = await getDoc(doc(db,'blog',"0"));
     // console.log(memberDoc.data());
 
-    // let user_data = {
-    //     "user_id" : "0",
-    //     "user_name" : "강다형",
-    //     "user_image" : "imgteam.png"
+    // let data = {
+    //     user_data: [{
+
+    //         "id": "0",
+    //         "name": "강다형",
+    //         "image": "https://ca.slack-edge.com/T043597JK8V-U05U1DV7VSR-1d2e0efedf7c-512",
+    //         "mbti": "ESFJ"
+    //     },
+    //     {
+    //         "id": "1",
+    //         "name": "최연식",
+    //         "image": "https://ca.slack-edge.com/T043597JK8V-U060662BZ40-37c2900a60af-512",
+    //         "mbti": "INFJ"
+    //     },
+    //     {
+    //         "id": "2",
+    //         "name": "하정현",
+    //         "image": "https://ca.slack-edge.com/T043597JK8V-U05UUEXD2TA-927f34d8476a-512",
+    //         "mbti": "INTP"
+    //     },
+    //     {
+    //         "id": "3",
+    //         "name": "김민수",
+    //         "image": "https://ca.slack-edge.com/T043597JK8V-U05UX2V43J6-gcc499207a54-512",
+    //         "mbti": "ENTP"
+    //     },
+    //     {
+    //         "id": "3",
+    //         "name": "김민수",
+    //         "image": "https://ca.slack-edge.com/T043597JK8V-U05UX2V43J6-gcc499207a54-512",
+    //         "mbti": "ENTP"
+    //     }
+    //     ]
     // }
-    // let data = {user_data};
-    // await setDoc(doc(db, "user", "0"),data);
-})
-
-
-
-//////////////////////////////////////////////////////////////////////////////
+    // await setDoc(doc(db, "user", "user_data"), data);
+});
 
 
 const addButton = document.getElementById("progile-add-button");
 const removeButton = document.getElementById("progile-remove-button");
 const profileContainer = document.getElementById("profile-container");
 
+// let userDoc = await getDoc(doc(db, 'user'));
+let userDoc = await getDoc(doc(db, 'user', "user_data"));
+let user_data = userDoc.data()["user_data"];
+// let post_data = blogData["user_data"];
+// console.log(user_data);
+// console.log(user_data.length);
+
 let profileCounter = 0;
-AddProfileCard("강다형", "ESFJ", "https://ca.slack-edge.com/T043597JK8V-U05U1DV7VSR-1d2e0efedf7c-512", "안녕하세요.");
-AddProfileCard("최연식", "INFJ", "https://ca.slack-edge.com/T043597JK8V-U060662BZ40-37c2900a60af-512", "안녕하세요.");
-AddProfileCard("하정현", "INTP", "https://ca.slack-edge.com/T043597JK8V-U05UUEXD2TA-927f34d8476a-512", "안녕하세요.");
-AddProfileCard("김민수", "ENTP", "https://ca.slack-edge.com/T043597JK8V-U05UX2V43J6-gcc499207a54-512", "안녕하세요.");
-AddProfileCard("정창일", "INFJ", "https://ca.slack-edge.com/T043597JK8V-U05UNF134SW-8a3d973918eb-512", "안녕하세요.");
+user_data.forEach(element => {
+      console.log(element);
+//      CreatePostBox(element);
+AddProfileCard(element);
+ });
+
+//  async function 
+
+//////////////////////////////////////////////////////////////////////////////
+
 
 addButton.addEventListener("click", () => {
     // 모달 팝업 창을 생성
@@ -188,7 +181,7 @@ addButton.addEventListener("click", () => {
             alert("이름을 입력해주세요.")
         }
         else {
-            
+
             AddProfileCard(name, mbti, imgurl, pr);
             // 팝업 창을 닫음
             document.body.removeChild(modal);
@@ -228,20 +221,34 @@ removeButton.addEventListener("click", () => {
     }
 });
 
-function AddProfileCard(name, mbti, imgurl, pr) {
+function AddProfileCard(data) {
+    let name = data["name"];
+    let mbti = data["mbti"];
+    let imgurl = data["image"];
+    let pr = "안녕하세요."
+    console.log(name);
+    console.log(mbti);
+    console.log(imgurl);
+
     const profileCard = document.createElement("div");
     profileCard.classList.add("profile-card");
     profileCard.textContent = name;
 
-    // profileCard.addEventListener("click", () => {
-    //     // window.location.href = 'https://www.naver.com';
-    //     window.location.href = 'index.html';
-    // });
-    
+    profileCard.addEventListener("click", () => {
+        // // window.location.href = 'https://www.naver.com';
+        // window.location.href = 'index.html';
+
+        window.location.href = 'blog.html?0';
+    });
+
+    profileCard.addEventListener("click", () => {
+        window.location.href = 'blog.html?0';
+    });
+
     if (mbti.length < 4) {
         mbti = "CUTE";
     }
-    
+
     if (pr.length < 1) {
         pr = "안녕하세요.";
     }

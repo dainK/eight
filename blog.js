@@ -23,11 +23,22 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //////////////////////////////////////////////////////////////////////////////
+
 async function GetBlogData() {
 
-    let memberDoc = await getDoc(doc(db, 'blog', "0"));
-    console.log(memberDoc.data());
-    return memberDoc;
+    let blogDoc = await getDoc(doc(db, 'blog', "0"));
+    let blogData = blogDoc.data();
+    // console.log(blogData);
+    let post_data = blogData["post_data"];
+    // console.log(post_data.length);
+    // return memberDoc;
+    // let post_data = JSON.parse(blogDoc);
+    // console.log(post_data);
+
+    post_data.forEach(element => {
+        console.log(element);
+        CreatePostBox(element);
+    });
 }
 GetBlogData();
 //////////////////////////////////////////////////////////////////////////////
@@ -36,25 +47,29 @@ const postContainer = document.getElementById("post-container");
 const addPostButton = document.getElementById("blog-test-button");
 
 addPostButton.addEventListener("click", () => {
-    console.log("13")
-    CreatePostBox();
+    // console.log("13")
+    // CreatePostBox();
 });
 
-function CreatePostBox() {
+function CreatePostBox(data) {
     const postbox = document.createElement("div");
     postbox.classList.add("blog-post-box");
 
-    let title = "제목";
-    let date = "날짜";
-    let text = "내용";
+    let content_data = data["content"];
+    let comment_data = data["comments"];
+
+    let title = content_data["title"];
+    let date = content_data["date"];
+    let text = content_data["text"];
 
 
     const content = document.createElement("div");
     content.classList.add("post");
 
-    content.innerHTML = `<h2> ${title}</h2>
-<p>${date}</p>
-<p>${text}</p>`;
+    content.innerHTML = `
+    <h2> ${title}</h2>
+    <p>${date}</p>
+    <p>${text}</p>`;
     postbox.append(content);
 
 
@@ -70,10 +85,17 @@ function CreatePostBox() {
 
     const comments = document.createElement("div");
     comments.classList.add("comments");
-    const comment = document.createElement("div");
-    comment.classList.add("comment");
-    comment.innerHTML = `<p><span class="comment-name">이름 </span> <span class="comment-text">내용</span> </p>`;
-    comments.append(comment);
+
+    comment_data.forEach(element => {
+        let comment_name = element["name"];
+        let comment_text = element["text"];
+
+        const comment = document.createElement("div");
+        comment.classList.add("comment");
+        comment.innerHTML = `<p>${comment_name} ${comment_text}</p>`;
+        comments.append(comment);
+    });
+
     commentbox.append(comments);
 
     const input = document.createElement("div");
@@ -107,7 +129,6 @@ function CreatePostBox() {
     // </div>`
 
     commentbtn.addEventListener("click", () => {
-        console.log("cl")
         commentbox.style.display = commentbox.style.display === 'block' ? 'none' : 'block';
     });
     commentbox.style.display = 'none';

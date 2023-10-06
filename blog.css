@@ -69,7 +69,7 @@ body {
     width: 400px;
     height: 350px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin: 10px;
     padding-top: 50px;
     
     background-image: url("imgmemo.png");
