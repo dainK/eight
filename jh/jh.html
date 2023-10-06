@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>자기소개</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
     body {
       background-color: #f1efdd;
@@ -159,7 +159,10 @@
     }
   </style>
 
-  
+
+ 
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -188,7 +191,6 @@
         margin-bottom: 30px;
         margin-top: 30px;
     "><span>HYEON</span>&nbsp;JUNG<span style="color: #4225A8"> HA</span></p>
-      <!-- 연락처 -->
       <div class="contacts">
         <p>1998.01.28, (82)10-3336-6426, ysyt3199@gmail.com</p>
       </div>
@@ -234,5 +236,23 @@
 
 
 </body>
+
+<script>
+
+  const clicks = document.querySelectorAll(".click");
+  const sections = document.querySelectorAll("section");
+  const firstTop = sections[0].offsetTop;
+  const secondTop = sections[1].offsetTop;
+
+  clicks[0].onclick = function () {
+    window.scroll({ top: firstTop, behavior: 'smooth' });
+  }
+  clicks[1].onclick = function () {
+    window.scroll({ top: secondTop, behavior: 'smooth' });
+  }
+
+
+</script>
+
 
 </html>
