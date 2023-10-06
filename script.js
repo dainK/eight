@@ -6,9 +6,9 @@ const profileContainer = document.getElementById("profile-container");
 let profileCounter = 0;
 AddProfileCard("강다형", "ESFJ", "https://ca.slack-edge.com/T043597JK8V-U05U1DV7VSR-1d2e0efedf7c-512", "안녕하세요.");
 AddProfileCard("최연식", "INFJ", "https://ca.slack-edge.com/T043597JK8V-U060662BZ40-37c2900a60af-512", "안녕하세요.");
-AddProfileCard("전민재", "ISTP", "https://ca.slack-edge.com/T043597JK8V-U05PQJAE9HT-8ef3edfa841e-512", "안녕하세요.");
 AddProfileCard("하정현", "INTP", "https://ca.slack-edge.com/T043597JK8V-U05UUEXD2TA-927f34d8476a-512", "안녕하세요.");
 AddProfileCard("김민수", "ENTP", "https://ca.slack-edge.com/T043597JK8V-U05UX2V43J6-gcc499207a54-512", "안녕하세요.");
+AddProfileCard("정창일", "INFJ", "https://ca.slack-edge.com/T043597JK8V-U05UNF134SW-8a3d973918eb-512", "안녕하세요.");
 
 addButton.addEventListener("click", () => {
     // 모달 팝업 창을 생성
