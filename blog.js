@@ -93,21 +93,23 @@ function CreatePostBox(data) {
     <h2> ${title}</h2>
     <p>${date}</p>
     <p>${text}</p>`;
-    postbox.append(content);
+    postbox.appendChild(content);
 
 
-    const commentbtn = document.createElement("div");
-    commentbtn.classList.add("comment-button");
-    commentbtn.textContent = "💬 덧글보기";
-    postbox.append(commentbtn);
+    // const commentbtn = document.createElement("div");
+    // commentbtn.classList.add("comment-button");
+    // commentbtn.textContent = "💬 덧글보기";
+    // postbox.appendChild(commentbtn);
 
 
     const commentbox = document.createElement("div");
     commentbox.classList.add("comment-box");
 
+    const commentcontainer = document.createElement("div");
+    commentcontainer.classList.add("comment-container");
 
-    const comments = document.createElement("div");
-    comments.classList.add("comments");
+    // const comments = document.createElement("div");
+    // comments.classList.add("comments");
 
     comment_data.forEach(element => {
         let comment_name = element["name"];
@@ -115,18 +117,25 @@ function CreatePostBox(data) {
 
         const comment = document.createElement("div");
         comment.classList.add("comment");
-        comment.innerHTML = `<p>${comment_name} ${comment_text}</p>`;
-        comments.append(comment);
+        comment.innerHTML = `<p> <span class = "comment-name">💬${comment_name}</span>   "${comment_text}"</p>`;
+        commentcontainer.appendChild(comment);
+
     });
-
-    commentbox.append(comments);
-
+    commentbox.appendChild(commentcontainer);
+    
+    // for(let i = 0; i<4; i++) {
+    //     const comment = document.createElement("div");
+    //     comment.classList.add("comment");
+    //     comment.innerHTML = `<p>테스트이름 테스트 내용</p>`;
+    //     commentcontainer.appendChild(comment);
+    // }
+    
     const input = document.createElement("div");
     input.classList.add("comment-input");
     input.innerHTML = `<input class="comment-input-name" type="text" placeholder="이름">
 <input class="comment-input-text" type="text" placeholder="내용">
-<button class="comment-input-button">입력</button>`;
-    commentbox.append(input);
+<button class="comment-input-button">💬</button>`;
+commentbox.appendChild(input);
 
     // `<div class="blog-post-box">
     // <div class="post">
@@ -151,10 +160,10 @@ function CreatePostBox(data) {
     // </div>
     // </div>`
 
-    commentbtn.addEventListener("click", () => {
-        commentbox.style.display = commentbox.style.display === 'block' ? 'none' : 'block';
-    });
-    commentbox.style.display = 'none';
+    // commentbtn.addEventListener("click", () => {
+    //     commentbox.style.display = commentbox.style.display === 'block' ? 'none' : 'block';
+    // });
+    // commentbox.style.display = 'none';
 
     postbox.appendChild(commentbox);
     postContainer.appendChild(postbox);

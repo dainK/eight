@@ -65,7 +65,7 @@ $("#test-button").click(async function () {
     //             }
     //         ];
     // let data = {post_data};
-    // await setDoc(doc(db, "blog", "1"),data);
+    // await setDoc(doc(db, "blog", "3"),data);
 
     // let memberDoc  = await getDoc(doc(db,'blog',"0"));
     // console.log(memberDoc.data());
@@ -108,8 +108,8 @@ $("#test-button").click(async function () {
 });
 
 
-const addButton = document.getElementById("progile-add-button");
-const removeButton = document.getElementById("progile-remove-button");
+// const addButton = document.getElementById("profile-add-button");
+// const removeButton = document.getElementById("profile-remove-button");
 const profileContainer = document.getElementById("profile-container");
 
 // let userDoc = await getDoc(doc(db, 'user'));
@@ -131,7 +131,8 @@ AddProfileCard(element);
 //////////////////////////////////////////////////////////////////////////////
 
 
-addButton.addEventListener("click", () => {
+$("#profile-add-button").click(async function () {
+    console.log("add");
     // 모달 팝업 창을 생성
     const modal = document.createElement("div");
     modal.classList.add("modal");
@@ -182,7 +183,7 @@ addButton.addEventListener("click", () => {
         }
         else {
 
-            AddProfileCard(name, mbti, imgurl, pr);
+            // AddProfileCard(name, mbti, imgurl, pr);
             // 팝업 창을 닫음
             document.body.removeChild(modal);
         }
@@ -213,7 +214,9 @@ addButton.addEventListener("click", () => {
 });
 
 
-removeButton.addEventListener("click", () => {
+$("#profile-remove-button").click(async function () {
+// removeButton.addEventListener("click", () => {
+    console.log("remove");
     const profileCards = profileContainer.querySelectorAll(".profile-card");
     if (profileCards.length > 0) {
         profileContainer.removeChild(profileCards[profileCards.length - 1]);

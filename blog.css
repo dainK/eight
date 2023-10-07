@@ -78,7 +78,8 @@ body {
 
 .post {
     padding: 20px;
-    height: 100px;
+    height: 150px;
+    /* border: 1px solid #2B3856; */
 }
 
 
@@ -91,26 +92,42 @@ body {
     color: #666;
 }
 
-.comment-box{
-    width: 400px;
-    height: 200px;
-    align-items: flex-start;
-    /* background-image: url("imgmemobot.png");
-    background-position: bottom;
-    background-size: 400px; */
-    display: flex;
+.comment-box {
+    /* border: 1px solid #2B3856; */
+    /* width: 400px; */
+    height: 140px;
+    /* padding: 20px; */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.comments {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    color: orange;
-    font-size: 15px; 
+.comment-container {
+    border: 1px solid #2B3856;
+    /* width: 50; */
+    /* padding: 20px; */
+    height: 110px;
+    max-height: 110px;
+    overflow-y: auto; 
+}
+
+.comment {
+    /* height: 10; */
+    flex-direction: column;
+    /* border: 1px solid #2B3856; */
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.comment-name {
+    width: 200px;
+    /* border: 1px solid #2B3856; */
+    /* font-size: 15; */
+    text-align: center;
 }
 
 .comment-input{
     top : 0;
-    /* padding: 20px; */
     padding-bottom: 20px;
     padding-left: 10px;
 }
