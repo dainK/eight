@@ -140,9 +140,6 @@ urlParts.forEach(element => {
 if(user_index == "none"){
     $("#logout-button").css("display", "none"); 
     $("#login-button").css("display", "block"); 
-    // $("#login-button").style.display = 'block';
-    // $("#logout-button").style.display = 'none';
-    // user_data[user_index].name;
     hello.textContent = "";
 }
 else {
@@ -379,6 +376,14 @@ $("#profile-remove-button").click(async function () {
                         alert("기존 팀원은 삭제 할 수 없습니다.");
                     }
                     else {
+                        // 게시판 삭제
+                        let blogDoc = await getDoc(doc(db, 'blog', removeIndex.toString()));
+                        let blogData = blogDoc.data();
+                        blogData.post_data= {};
+                        // let blogdata = { post_data : {} };
+                        await setDoc(doc(db, "blog", removeIndex.toString()), blogData);
+
+                        // 유저 삭제
                         user_data.splice(removeIndex, 1);
 
                         let setdata = {

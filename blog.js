@@ -35,12 +35,12 @@ const urlParts = currentUrl.split('?');
 let user_index = "none";
 let blog_index = "none"
 urlParts.forEach(element => {
-    if(element.indexOf("user-index:") > -1 ) {
-        user_index = element.substring(11,  element.length);
+    if (element.indexOf("user-index:") > -1) {
+        user_index = element.substring(11, element.length);
         console.log(user_index);
     }
-    if(element.indexOf("blog-index:") > -1 ) {
-        blog_index = element.substring(11,  element.length); 
+    if (element.indexOf("blog-index:") > -1) {
+        blog_index = element.substring(11, element.length);
         console.log(blog_index);
     }
 });
@@ -52,27 +52,24 @@ UserProfile(user_data);
 
 let blogDoc = await getDoc(doc(db, 'blog', blog_index));
 let blogData = blogDoc.data();
-if( !!blogData) {
+if (!!blogData) {
     let post_data = blogData["post_data"];
     console.log(post_data);
-    
-     post_data.forEach(element => {
-          console.log(element);
-         CreatePostBox(element);
-     });
+
+    post_data.forEach(element => {
+        console.log(element);
+        CreatePostBox(element);
+    });
 }
 else {
 
 }
-if(user_index == blog_index){
+if (user_index == blog_index) {
     $("#blog-posting-button").css("display", "block");
 }
 else {
-    $("#blog-posting-button").css("display", "none"); 
+    $("#blog-posting-button").css("display", "none");
 }
-
-$("#blog-posting-button").click(async function () {
-});
 
 $("#back-button").click(async function () {
     window.location.href = 'index.html?user-index:' + user_index;
@@ -84,11 +81,11 @@ function UserProfile(data) {
 
     let img = document.createElement("div");
     img.classList.add("blog-image");
-    img.innerHTML =`<img src=${data.image} class="blog-image" alt="이미지 설명">`;
+    img.innerHTML = `<img src=${data.image} class="blog-image" alt="이미지 설명">`;
     headbox.appendChild(img);
-    
+
     let title = document.createElement("div");
-    title.innerHTML =`<p class="blog-name" >${data.name}님의 다이어리 </p>`;
+    title.innerHTML = `<p class="blog-name" >${data.name}님의 다이어리 </p>`;
     headbox.appendChild(title);
 
     blogHeadContainer.appendChild(headbox);
@@ -108,7 +105,6 @@ function CreatePostBox(data) {
 
     const content = document.createElement("div");
     content.classList.add("post");
-    
 
     const content_inner = document.createElement("div");
     content_inner.classList.add("post-content");
@@ -121,20 +117,11 @@ function CreatePostBox(data) {
     postbox.appendChild(content);
 
 
-    // const commentbtn = document.createElement("div");
-    // commentbtn.classList.add("comment-button");
-    // commentbtn.textContent = "💬 덧글보기";
-    // postbox.appendChild(commentbtn);
-
-
     const commentbox = document.createElement("div");
     commentbox.classList.add("comment-box");
 
     const commentcontainer = document.createElement("div");
     commentcontainer.classList.add("comment-container");
-
-    // const comments = document.createElement("div");
-    // comments.classList.add("comments");
 
     comment_data.forEach(element => {
         let comment_name = element["name"];
@@ -147,75 +134,135 @@ function CreatePostBox(data) {
 
     });
     commentbox.appendChild(commentcontainer);
-    
-    // for(let i = 0; i<4; i++) {
-    //     const comment = document.createElement("div");
-    //     comment.classList.add("comment");
-    //     comment.innerHTML = `<p>테스트이름 테스트 내용</p>`;
-    //     commentcontainer.appendChild(comment);
-    // }
-    
+
     const input = document.createElement("div");
     input.classList.add("comment-input");
-//     input.innerHTML = `
-// <input class="comment-input-text" type="text" width = "200" placeholder="덧글작성하기">
-// <button class="comment-input-button">💬</button>`;
-const input_comment = document.createElement("input"); 
-input_comment.type = text;
-input_comment.style.width = "310px";
-// input_comment.width = "100%";
-input_comment.placeholder = "덧글작성하기";
-input.appendChild(input_comment);
-const input_button = document.createElement("button"); 
-input_button.classList.add("comment-button");
-input_button.textContent = "💬";
-input_button.addEventListener("click", () => {
-    if(user_index == "none") {
-        alert("로그인이 필요합니다.")
-    }
-    else {
-        if(!!input_comment.value) {
-            //TODO:
+    const input_comment = document.createElement("input");
+    input_comment.type = text;
+    input_comment.style.width = "310px";
+    input_comment.placeholder = "덧글작성하기";
+    input.appendChild(input_comment);
+    const input_button = document.createElement("button");
+    input_button.classList.add("comment-button");
+    input_button.textContent = "💬";
+    input_button.addEventListener("click", () => {
+        if (user_index == "none") {
+            alert("로그인이 필요합니다.")
         }
         else {
-            alert("내용을 입력해주세요.")
+            if (!!input_comment.value) {
+                //TODO:
+            }
+            else {
+                alert("내용을 입력해주세요.")
+            }
         }
-    }
-});
-input.appendChild(input_button);
+    });
+    input.appendChild(input_button);
 
-// input.classList.add("comment-input");
 
-commentbox.appendChild(input);
+    commentbox.appendChild(input);
 
-    // `<div class="blog-post-box">
-    // <div class="post">
-    //     <h2 class="post-title">첫 번째 글 제목</h2>
-    //     <p class="post-date">2023년 10월 5일</p>
-    //     <p class="post-text">첫 번째 글 내용...</p>
-    // </div>
-    // <div class="comment-button"> 💬 10</div>
-    // <div class="comments">
-    //     <div class="comment">
-    //         <p><span class="comment-name">이름 </span> <span class="comment-text">내용</span> </p>
-    //     </div>
-    //     <div class="comment">
-    //         <p><span class="comment-name">이름 </span> <span class="comment-text">내용</span> </p>
-    //     </div>
-    //     <!-- 다른 댓글들도 유사한 방식으로 추가할 수 있습니다. -->
-    //     <div class="comment-input">
-    //         <input class="comment-input-name" type="text" placeholder="이름">
-    //         <input class="comment-input-text" type="text" placeholder="내용">
-    //         <button class="comment-input-button">입력</button>
-    //     </div>
-    // </div>
-    // </div>`
 
-    // commentbtn.addEventListener("click", () => {
-    //     commentbox.style.display = commentbox.style.display === 'block' ? 'none' : 'block';
-    // });
-    // commentbox.style.display = 'none';
 
     postbox.appendChild(commentbox);
     postContainer.appendChild(postbox);
 }
+
+
+$("#blog-posting-button").click(async function () {
+    // 모달 팝업 창을 생성
+    let modal = document.createElement("div");
+    modal.classList.add("modal");
+
+    let modalContent = document.createElement("div");
+    modalContent.classList.add("modal-content");
+
+    // 제목 입력 필드
+    let titleLabel = document.createElement("label");
+    titleLabel.textContent = "제목 : ";
+    let titleField = document.createElement("input");
+    titleField.type = "text";
+    modalContent.appendChild(titleLabel);
+    modalContent.appendChild(titleField);
+
+    // 내용 입력 필드
+    let textLabel = document.createElement("label");
+    textLabel.textContent = "내용 : ";
+    let textField = document.createElement("input");
+    textField.type = "text";
+    modalContent.appendChild(textLabel);
+    modalContent.appendChild(textField);
+
+    let modalbutton = document.createElement("div");
+    modalbutton.classList.add("modal-button");
+    modalContent.appendChild(modalbutton);
+
+    let addButtonModal = document.createElement("button");
+    addButtonModal.textContent = "등록하기";
+    // "등록하기" 버튼을 클릭할 때 프로필을 생성하고 팝업 창을 닫음
+
+    addButtonModal.addEventListener("click", () => {
+        let title = titleField.value;
+        let text = textField.value;
+
+        let currentDate = new Date();
+        
+        let year = currentDate.getFullYear();
+        let month = currentDate.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
+        let day = currentDate.getDate();
+        
+        let date = `${year}-${month}-${day}`;
+
+        if (!title) {
+            alert("제목을 입력해주세요.");
+        }
+        else if (!text) {
+            alert("내용을 입력해주세요.");
+        }
+        else {
+            async function SetDBPostData() {
+                let newdata = {
+                    "content": {
+                        "title": title,
+                        "date": date,
+                        "text": text
+                    },
+                    "comments": [
+                    ]
+                }
+                let blogDoc = await getDoc(doc(db, 'blog', blog_index));
+                let blogData = blogDoc.data();
+                if (!!blogData) {
+                    let post_data = blogData["post_data"];
+                    post_data[post_data.length] = newdata;
+                    let data = { post_data };
+                    await setDoc(doc(db, "blog", blog_index), data);
+                }
+                else {
+                    let data = {post_data:[newdata]};
+                    await setDoc(doc(db, "blog", blog_index),data);
+                }
+                window.location.reload();
+            }
+            SetDBPostData();
+
+            // 팝업 창을 닫음
+            document.body.removeChild(modal);
+        }
+
+    });
+    modalbutton.appendChild(addButtonModal);
+
+    modal.appendChild(modalContent);
+
+    // 모달을 body에 추가
+    document.body.appendChild(modal);
+
+    // 모달을 닫기 위한 클릭 이벤트 추가
+    modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            document.body.removeChild(modal);
+        }
+    });
+});
