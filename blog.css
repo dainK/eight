@@ -82,6 +82,16 @@ body {
     /* border: 1px solid #2B3856; */
 }
 
+.post-content {
+    /* padding: 20px; */
+    /* height: 150px; */
+    /* border: 1px solid #2B3856; */
+    height: 150px;
+    max-height: 150px;
+    overflow-y: auto; 
+}
+
+
 
 .post-title {
     font-size: 20px;
@@ -119,34 +129,36 @@ body {
 
 }
 
-.comment-name {
-    width: 200px;
-    /* border: 1px solid #2B3856; */
-    /* font-size: 15; */
+/* .comment-name {
+    width: 350px;
     text-align: center;
-}
+} */
+
 
 .comment-input{
     top : 0;
-    padding-bottom: 20px;
-    padding-left: 10px;
+    /* padding-bottom: 10px; */
+    /* padding-left: 10px; */
+    right : 0;
+    /* border: 1px solid #2B3856; */
 }
 
 .comment-button {
     color: black; /* 텍스트 색상을 노란색으로 설정 */
-    border: 1px solid #2B3856;
+    /* border: 1px solid #2B3856; */
     cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 표시 */
-    font-size: 15px; /* 글꼴 크기 설정 */
+    /* font-size: 15px;  */
     border-radius: 10px; /* 버튼의 모서리를 10px로 둥글게 설정 */
     padding: 2px;
-    margin: 14px;
-    width: 80px;
+    margin: 4px;
+    width: 30px;
+    
     
 }
 
 
-.blog-posting-button {
-    justify-content: center;
+#blog-posting-button {
+    /* justify-content: center; */
     margin: 5px;
     background-color: black; /* 배경색을 검은색으로 설정 */
     color: orange; /* 텍스트 색상을 노란색으로 설정 */
@@ -156,4 +168,27 @@ body {
     font-size: 16px; /* 글꼴 크기 설정 */
     border-radius: 10px; /* 버튼의 모서리를 10px로 둥글게 설정 */
     margin: 10px;
+}
+
+button {
+    /* justify-content: center; */
+    margin: 5px;
+    background-color: black; /* 배경색을 검은색으로 설정 */
+    color: orange; /* 텍스트 색상을 노란색으로 설정 */
+    padding: 10px ;
+    border: none; /* 버튼 테두리 제거 */
+    cursor: pointer; /* 커서 모양을 포인터로 변경하여 클릭 가능한 버튼임을 표시 */
+    font-size: 16px; /* 글꼴 크기 설정 */
+    border-radius: 10px; /* 버튼의 모서리를 10px로 둥글게 설정 */
+    margin: 10px;
+}
+
+.menu-buttons {
+    font-weight: bold;
+    font-size: 24px;
+    width: 100%;
+    top:0;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
 }

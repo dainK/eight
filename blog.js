@@ -26,12 +26,7 @@ const db = getFirestore(app);
 
 const blogHeadContainer = document.getElementById("blog-head-container");
 const postContainer = document.getElementById("post-container");
-const addPostButton = document.getElementById("blog-test-button");
 
-addPostButton.addEventListener("click", () => {
-    // console.log("13")
-    // CreatePostBox();
-});
 
 // 현재 URL 가져오기
 const currentUrl = window.location.href;
@@ -69,6 +64,20 @@ if( !!blogData) {
 else {
 
 }
+if(user_index == blog_index){
+    $("#blog-posting-button").css("display", "block");
+}
+else {
+    $("#blog-posting-button").css("display", "none"); 
+}
+
+$("#blog-posting-button").click(async function () {
+});
+
+$("#back-button").click(async function () {
+    window.location.href = 'index.html?user-index:' + user_index;
+});
+
 function UserProfile(data) {
     let headbox = document.createElement("div");
     headbox.classList.add("blog-head");
@@ -99,11 +108,16 @@ function CreatePostBox(data) {
 
     const content = document.createElement("div");
     content.classList.add("post");
+    
 
-    content.innerHTML = `
+    const content_inner = document.createElement("div");
+    content_inner.classList.add("post-content");
+
+    content_inner.innerHTML = `
     <h2> ${title}</h2>
     <p>${date}</p>
     <p>${text}</p>`;
+    content.appendChild(content_inner);
     postbox.appendChild(content);
 
 
@@ -143,9 +157,35 @@ function CreatePostBox(data) {
     
     const input = document.createElement("div");
     input.classList.add("comment-input");
-    input.innerHTML = `<input class="comment-input-name" type="text" placeholder="이름">
-<input class="comment-input-text" type="text" placeholder="내용">
-<button class="comment-input-button">💬</button>`;
+//     input.innerHTML = `
+// <input class="comment-input-text" type="text" width = "200" placeholder="덧글작성하기">
+// <button class="comment-input-button">💬</button>`;
+const input_comment = document.createElement("input"); 
+input_comment.type = text;
+input_comment.style.width = "310px";
+// input_comment.width = "100%";
+input_comment.placeholder = "덧글작성하기";
+input.appendChild(input_comment);
+const input_button = document.createElement("button"); 
+input_button.classList.add("comment-button");
+input_button.textContent = "💬";
+input_button.addEventListener("click", () => {
+    if(user_index == "none") {
+        alert("로그인이 필요합니다.")
+    }
+    else {
+        if(!!input_comment.value) {
+            //TODO:
+        }
+        else {
+            alert("내용을 입력해주세요.")
+        }
+    }
+});
+input.appendChild(input_button);
+
+// input.classList.add("comment-input");
+
 commentbox.appendChild(input);
 
     // `<div class="blog-post-box">
