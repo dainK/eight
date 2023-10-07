@@ -38,6 +38,16 @@ const currentUrl = window.location.href;
 // URL 파싱
 const urlParts = currentUrl.split('?');
 let id =  urlParts[1];
+urlParts.forEach(element => {
+    if(element.indexOf("user-index:") > -1 ) {
+        console.log(element.substring(11, element.length));
+    }
+    if(element.indexOf("blog-index:") > -1 ) {
+        id = element.substring(11,  element.length); 
+        // id = element;
+        console.log(id);
+    }
+});
 
 let userDoc = await getDoc(doc(db, 'user', "user_data"));
 let user_data = userDoc.data()["user_data"][id];
