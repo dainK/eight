@@ -65,7 +65,7 @@ $("#test-button").click(async function () {
     //             }
     //         ];
     // let data = {post_data};
-    // await setDoc(doc(db, "blog", "0"),data);
+    // await setDoc(doc(db, "blog", "1"),data);
 
     // let memberDoc  = await getDoc(doc(db,'blog',"0"));
     // console.log(memberDoc.data());
@@ -229,20 +229,14 @@ function AddProfileCard(data) {
     console.log(name);
     console.log(mbti);
     console.log(imgurl);
+    let id = data["id"];
 
     const profileCard = document.createElement("div");
     profileCard.classList.add("profile-card");
     profileCard.textContent = name;
 
     profileCard.addEventListener("click", () => {
-        // // window.location.href = 'https://www.naver.com';
-        // window.location.href = 'index.html';
-
-        window.location.href = 'blog.html?0';
-    });
-
-    profileCard.addEventListener("click", () => {
-        window.location.href = 'blog.html?0';
+        window.location.href = 'blog.html?' + id;
     });
 
     if (mbti.length < 4) {

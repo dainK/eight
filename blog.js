@@ -24,25 +24,6 @@ const db = getFirestore(app);
 
 //////////////////////////////////////////////////////////////////////////////
 
-async function GetBlogData() {
-
-    let blogDoc = await getDoc(doc(db, 'blog', "0"));
-    let blogData = blogDoc.data();
-    // console.log(blogData);
-    let post_data = blogData["post_data"];
-    // console.log(post_data.length);
-    // return memberDoc;
-    // let post_data = JSON.parse(blogDoc);
-    // console.log(post_data);
-
-    post_data.forEach(element => {
-        console.log(element);
-        CreatePostBox(element);
-    });
-}
-GetBlogData();
-//////////////////////////////////////////////////////////////////////////////
-
 const postContainer = document.getElementById("post-container");
 const addPostButton = document.getElementById("blog-test-button");
 
@@ -50,6 +31,45 @@ addPostButton.addEventListener("click", () => {
     // console.log("13")
     // CreatePostBox();
 });
+
+// 현재 URL 가져오기
+const currentUrl = window.location.href;
+// URL 파싱
+const urlParts = currentUrl.split('?');
+let id =  urlParts[1];
+
+let blogDoc = await getDoc(doc(db, 'blog', id));
+let blogData = blogDoc.data();
+if( !!blogData) {
+    let post_data = blogData["post_data"];
+    console.log(post_data);
+    
+     post_data.forEach(element => {
+          console.log(element);
+         CreatePostBox(element);
+     });
+}
+
+
+// async function GetBlogData() {
+
+//     let blogDoc = await getDoc(doc(db, 'blog', "0"));
+//     let blogData = blogDoc.data();
+//     // console.log(blogData);
+//     let post_data = blogData["post_data"];
+//     // console.log(post_data.length);
+//     // return memberDoc;
+//     // let post_data = JSON.parse(blogDoc);
+//     // console.log(post_data);
+
+//     post_data.forEach(element => {
+//         console.log(element);
+//         CreatePostBox(element);
+//     });
+// }
+// GetBlogData();
+//////////////////////////////////////////////////////////////////////////////
+
 
 function CreatePostBox(data) {
     const postbox = document.createElement("div");
