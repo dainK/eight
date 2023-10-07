@@ -27,6 +27,7 @@ const db = getFirestore(app);
 const blogHeadContainer = document.getElementById("blog-head-container");
 const postContainer = document.getElementById("post-container");
 
+let postCounter = 0;
 
 // 현재 URL 가져오기
 const currentUrl = window.location.href;
@@ -145,6 +146,7 @@ function CreatePostBox(data) {
     const input_button = document.createElement("button");
     input_button.classList.add("comment-button");
     input_button.textContent = "💬";
+    const post_index = postCounter;
     input_button.addEventListener("click", () => {
         if (user_index == "none") {
             alert("로그인이 필요합니다.")
@@ -152,6 +154,7 @@ function CreatePostBox(data) {
         else {
             if (!!input_comment.value) {
                 //TODO:
+                SetComment(post_index,input_comment.value);
             }
             else {
                 alert("내용을 입력해주세요.")
@@ -167,6 +170,26 @@ function CreatePostBox(data) {
 
     postbox.appendChild(commentbox);
     postContainer.appendChild(postbox);
+    postCounter++;
+}
+
+async function SetComment(post_index,text) {
+    let userDoc = await getDoc(doc(db, 'user', "user_data"));
+    let user_data = userDoc.data()["user_data"][user_index];
+
+    let blogDoc = await getDoc(doc(db, 'blog', blog_index));
+    let post_data = blogData["post_data"];
+    // console.log(post_data);
+
+    let newcomment = {
+        name : user_data.name,
+        text : text
+    }
+    post_data[post_index]["comments"][post_data[post_index]["comments"].length] = newcomment;
+
+    let data = { post_data };
+    await setDoc(doc(db, "blog", blog_index), data);
+    window.location.reload();
 }
 
 
