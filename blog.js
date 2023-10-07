@@ -37,24 +37,25 @@ addPostButton.addEventListener("click", () => {
 const currentUrl = window.location.href;
 // URL 파싱
 const urlParts = currentUrl.split('?');
-let id =  urlParts[1];
+let user_index = "none";
+let blog_index = "none"
 urlParts.forEach(element => {
     if(element.indexOf("user-index:") > -1 ) {
-        console.log(element.substring(11, element.length));
+        user_index = element.substring(11,  element.length);
+        console.log(user_index);
     }
     if(element.indexOf("blog-index:") > -1 ) {
-        id = element.substring(11,  element.length); 
-        // id = element;
-        console.log(id);
+        blog_index = element.substring(11,  element.length); 
+        console.log(blog_index);
     }
 });
 
 let userDoc = await getDoc(doc(db, 'user', "user_data"));
-let user_data = userDoc.data()["user_data"][id];
+let user_data = userDoc.data()["user_data"][blog_index];
 console.log(user_data);
 UserProfile(user_data);
 
-let blogDoc = await getDoc(doc(db, 'blog', id));
+let blogDoc = await getDoc(doc(db, 'blog', blog_index));
 let blogData = blogDoc.data();
 if( !!blogData) {
     let post_data = blogData["post_data"];

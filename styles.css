@@ -38,6 +38,11 @@ body {
     justify-content: flex-end;
 }
 
+#login-user{
+    
+    margin: 20px;
+}
+
 .team-box {
     display: flex;
     justify-content: center;
