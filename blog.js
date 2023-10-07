@@ -24,6 +24,7 @@ const db = getFirestore(app);
 
 //////////////////////////////////////////////////////////////////////////////
 
+const blogHeadContainer = document.getElementById("blog-head-container");
 const postContainer = document.getElementById("post-container");
 const addPostButton = document.getElementById("blog-test-button");
 
@@ -38,6 +39,11 @@ const currentUrl = window.location.href;
 const urlParts = currentUrl.split('?');
 let id =  urlParts[1];
 
+let userDoc = await getDoc(doc(db, 'user', "user_data"));
+let user_data = userDoc.data()["user_data"][id];
+console.log(user_data);
+UserProfile(user_data);
+
 let blogDoc = await getDoc(doc(db, 'blog', id));
 let blogData = blogDoc.data();
 if( !!blogData) {
@@ -49,27 +55,24 @@ if( !!blogData) {
          CreatePostBox(element);
      });
 }
+else {
 
+}
+function UserProfile(data) {
+    let headbox = document.createElement("div");
+    headbox.classList.add("blog-head");
 
-// async function GetBlogData() {
+    let img = document.createElement("div");
+    img.classList.add("blog-image");
+    img.innerHTML =`<img src=${data.image} class="blog-image" alt="이미지 설명">`;
+    headbox.appendChild(img);
+    
+    let title = document.createElement("div");
+    title.innerHTML =`<p class="blog-name" >${data.name}님의 다이어리 </p>`;
+    headbox.appendChild(title);
 
-//     let blogDoc = await getDoc(doc(db, 'blog', "0"));
-//     let blogData = blogDoc.data();
-//     // console.log(blogData);
-//     let post_data = blogData["post_data"];
-//     // console.log(post_data.length);
-//     // return memberDoc;
-//     // let post_data = JSON.parse(blogDoc);
-//     // console.log(post_data);
-
-//     post_data.forEach(element => {
-//         console.log(element);
-//         CreatePostBox(element);
-//     });
-// }
-// GetBlogData();
-//////////////////////////////////////////////////////////////////////////////
-
+    blogHeadContainer.appendChild(headbox);
+}
 
 function CreatePostBox(data) {
     const postbox = document.createElement("div");
