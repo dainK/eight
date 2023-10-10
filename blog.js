@@ -57,10 +57,12 @@ if (!!blogData) {
     let post_data = blogData["post_data"];
     console.log(post_data);
 
-    post_data.forEach(element => {
-        console.log(element);
-        CreatePostBox(element);
-    });
+    if(post_data.length>0) {
+        post_data.forEach(element => {
+            console.log(element);
+            CreatePostBox(element);
+        });
+    }
 }
 else {
 
@@ -140,7 +142,7 @@ function CreatePostBox(data) {
     input.classList.add("comment-input");
     const input_comment = document.createElement("input");
     input_comment.type = text;
-    input_comment.style.width = "310px";
+    input_comment.style.width = "300px";
     input_comment.placeholder = "덧글작성하기";
     input.appendChild(input_comment);
     const input_button = document.createElement("button");
@@ -153,7 +155,6 @@ function CreatePostBox(data) {
         }
         else {
             if (!!input_comment.value) {
-                //TODO:
                 SetComment(post_index,input_comment.value);
             }
             else {

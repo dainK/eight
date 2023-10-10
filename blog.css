@@ -85,7 +85,7 @@ body {
 .post-content {
     /* padding: 20px; */
     /* height: 150px; */
-    border: 1px solid #2B3856;
+    /* border: 1px solid #2B3856; */
     height: 150px;
     max-height: 150px;
     overflow-y: auto; 
