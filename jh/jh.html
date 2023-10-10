@@ -244,13 +244,23 @@
   const firstTop = sections[0].offsetTop;
   const secondTop = sections[1].offsetTop;
 
+
+  clicks[0].addEventListener('click', function(event) {
+    window.scroll({ top: firstTop, behavior: 'smooth' });
+  });
+
+  clicks[1].addEventListener('click', function(event) {
+    window.scroll({ top: secondTop, behavior: 'smooth' });
+  });
+
+/*
   clicks[0].onclick = function () {
     window.scroll({ top: firstTop, behavior: 'smooth' });
   }
   clicks[1].onclick = function () {
     window.scroll({ top: secondTop, behavior: 'smooth' });
   }
-
+*/
 
 </script>
 
